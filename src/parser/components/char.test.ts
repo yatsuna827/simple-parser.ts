@@ -1,6 +1,6 @@
+import { success, failure } from '#/common'
+import { split } from '#/parser'
 import { char } from './char'
-import { success, failure } from '../../common'
-import { split } from '../charArray'
 
 describe('char "a"', () => {
   const parser = char('a')

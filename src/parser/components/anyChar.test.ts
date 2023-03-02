@@ -1,6 +1,6 @@
+import { success, failure } from '#/common'
+import { split } from '#/parser'
 import { anyChar } from './anyChar'
-import { success, failure } from '../../common'
-import { split } from '../charArray'
 
 describe('anyChar', () => {
   it('先頭の1文字だけを切り取る', () => {

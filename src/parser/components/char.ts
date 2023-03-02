@@ -1,5 +1,5 @@
-import type { Parser } from '../parser'
-import { failure } from '../../common'
+import { failure } from '#/common'
+import { type Parser } from '#/parser'
 import { anyChar } from './anyChar'
 
 export const char: (c: string) => Parser<string> = (c) => {

@@ -1,6 +1,6 @@
+import { success, failure } from '#/common'
+import { split } from '#/parser'
 import { eof } from './eof'
-import { success, failure } from '../../common'
-import { split } from '../charArray'
 
 describe('eof', () => {
   it('空文字が渡されたら成功し, データはnullになる', () => {

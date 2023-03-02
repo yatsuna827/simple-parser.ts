@@ -5,4 +5,7 @@ module.exports = {
   testMatch: ['<rootDir>/**/*.test.ts'],
   collectCoverage: true,
   errorOnDeprecated: true,
+  moduleNameMapper: {
+    '^#/(.*)$': '<rootDir>/src/$1',
+  },
 }

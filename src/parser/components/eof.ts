@@ -1,6 +1,5 @@
-import type { Parser } from '../parser'
-import { shift } from '../charArray'
-import { success, failure } from '../../common'
+import { success, failure } from '#/common'
+import { type Parser, shift } from '#/parser'
 
 export const eof: Parser<null> = (input) => {
   const [head, rest] = shift(input)

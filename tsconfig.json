@@ -12,7 +12,22 @@
     "rootDir": "./src",
     "sourceMap": true,
     "declaration": true,
-    "declarationMap": true
+    "declarationMap": true,
+    "paths": {
+      "#/*": ["./src/*"]
+    }
   },
-  "include": ["src/**/*"]
+  "ts-node": {
+    "compilerOptions": {
+      "module": "CommonJS",
+      "resolveJsonModule": true,
+      "baseUrl": ".",
+      "paths": {
+        "#/*": ["/src/*"]
+      }
+    },
+    "include": ["src/**/*.ts"]
+  },
+  "include": ["src/**/*"],
+  "exclude": ["node_modules"]
 }

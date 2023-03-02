@@ -1,4 +1,4 @@
-import type { Branded } from '../common/branded'
+import type { Branded } from '#/common'
 
 export type CharArray = Branded<readonly string[], 'CharArray'>
 const charArray = (arr: readonly string[]): CharArray => arr as CharArray
