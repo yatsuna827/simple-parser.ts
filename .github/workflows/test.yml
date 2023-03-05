@@ -22,16 +22,16 @@ jobs:
         run: npm run test
         continue-on-error: true
 
-      - name: Upload results
+      - name: Upload coverage
         uses: actions/upload-artifact@v3
         with:
-          name: test_results
-          path: results/*.xml
+          name: coverage
+          path: coverage
 
       - name: Download results
         uses: actions/download-artifact@v3
         with:
-          name: test_results
+          name: coverage
           path: artifacts
 
       - name: Display results
