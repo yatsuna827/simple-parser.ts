@@ -6,8 +6,8 @@ describe('char "a"', () => {
   const parser = char('a')
 
   it('正常系', () => {
-    expect(parser(split('a'))).toEqual(success(['a', []]))
-    expect(parser(split('abc'))).toEqual(success(['a', ['b', 'c']]))
+    expect(parser(split('a'))).toEqual(success([['a'], []]))
+    expect(parser(split('abc'))).toEqual(success([['a'], ['b', 'c']]))
   })
   it('a以外の文字が渡されたら失敗', () => {
     expect(parser(split('b'))).toEqual(failure())
@@ -30,8 +30,8 @@ describe('char "B"', () => {
   const parser = char('B')
 
   it('正常系', () => {
-    expect(parser(split('B'))).toEqual(success(['B', []]))
-    expect(parser(split('Bcc'))).toEqual(success(['B', ['c', 'c']]))
+    expect(parser(split('B'))).toEqual(success([['B'], []]))
+    expect(parser(split('Bcc'))).toEqual(success([['B'], ['c', 'c']]))
   })
   it('B以外の文字が渡されたら失敗', () => {
     expect(parser(split('a'))).toEqual(failure())

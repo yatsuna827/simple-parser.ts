@@ -6,16 +6,16 @@ describe('matchedChar "a" or "b"', () => {
   const parser = matchedChar((c) => c === 'a' || c === 'b')
 
   it('"a" 1文字', () => {
-    expect(parser(split('a'))).toEqual(success(['a', []]))
+    expect(parser(split('a'))).toEqual(success([['a'], []]))
   })
   it('"b" 1文字', () => {
-    expect(parser(split('b'))).toEqual(success(['b', []]))
+    expect(parser(split('b'))).toEqual(success([['b'], []]))
   })
   it('"a"から始まる文字列', () => {
-    expect(parser(split('abc'))).toEqual(success(['a', ['b', 'c']]))
+    expect(parser(split('abc'))).toEqual(success([['a'], ['b', 'c']]))
   })
   it('"b"から始まる文字列', () => {
-    expect(parser(split('bad'))).toEqual(success(['b', ['a', 'd']]))
+    expect(parser(split('bad'))).toEqual(success([['b'], ['a', 'd']]))
   })
 
   it('"c" 1文字', () => {
@@ -37,10 +37,10 @@ describe('matchedChar 任意の文字に対して成功する', () => {
   const parser = matchedChar(() => true)
 
   it('"a" 1文字', () => {
-    expect(parser(split('a'))).toEqual(success(['a', []]))
+    expect(parser(split('a'))).toEqual(success([['a'], []]))
   })
   it('" " 1文字', () => {
-    expect(parser(split(' '))).toEqual(success([' ', []]))
+    expect(parser(split(' '))).toEqual(success([[' '], []]))
   })
   it('文字が切り出せなかった場合に限って失敗する', () => {
     expect(parser(split(''))).toEqual(failure())

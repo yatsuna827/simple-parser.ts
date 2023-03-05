@@ -4,7 +4,7 @@ import { eof } from './eof'
 
 describe('eof', () => {
   it('空文字が渡されたら成功し, データはnullになる', () => {
-    expect(eof(split(''))).toEqual(success([null, []]))
+    expect(eof(split(''))).toEqual(success([[], []]))
   })
   it('空文字以外が返されたら失敗する', () => {
     expect(eof(split('a'))).toEqual(failure())
