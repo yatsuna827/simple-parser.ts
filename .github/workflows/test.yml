@@ -21,20 +21,3 @@ jobs:
       - name: Run Jest
         run: npm run test
         continue-on-error: true
-
-      - name: Upload coverage
-        uses: actions/upload-artifact@v3
-        with:
-          name: coverage
-          path: coverage
-
-      - name: Download results
-        uses: actions/download-artifact@v3
-        with:
-          name: coverage
-          path: artifacts
-
-      - name: Display results
-        uses: EnricoMi/publish-unit-test-result-action@v2
-        with:
-          junit_files: artifacts/**/*.xml
