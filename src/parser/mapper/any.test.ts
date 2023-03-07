@@ -1,5 +1,5 @@
-import { success, failure, Result } from '#/common'
-import { CharArray, split } from '#/parser'
+import { success, failure } from '#/common'
+import { type ParseResult, split } from '#/parser'
 import { char, eof, matchedChar } from '#/parser/components'
 import { any } from './any'
 
@@ -12,7 +12,7 @@ describe('any', () => {
     )
 
     it('a,b,あ,い,う を受け付ける', () => {
-      const result = p(split('a')) satisfies Result<[[string], CharArray]>
+      const result = p(split('a')) satisfies ParseResult<[string]>
       expect(result).toEqual(success([['a'], []]))
       expect(p(split('b'))).toEqual(success([['b'], []]))
       expect(p(split('あ'))).toEqual(success([['あ'], []]))
@@ -29,7 +29,7 @@ describe('any', () => {
     const p = any(char('0'), char(' '), eof)
 
     it('"0", " ", eof を受け付ける', () => {
-      const result = p(split('0')) satisfies Result<[[string] | [], CharArray]>
+      const result = p(split('0')) satisfies ParseResult<[string] | []>
       expect(result).toEqual(success([['0'], []]))
       expect(p(split(' ?'))).toEqual(success([[' '], ['?']]))
       expect(p(split(''))).toEqual(success([[], []]))

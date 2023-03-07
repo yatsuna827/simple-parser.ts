@@ -1,5 +1,5 @@
-import { success, failure, Result } from '#/common'
-import { CharArray, split } from '#/parser'
+import { success, failure } from '#/common'
+import { type ParseResult, split } from '#/parser'
 import { anyChar, char, eof } from '#/parser/components'
 import { all } from './all'
 
@@ -8,11 +8,11 @@ describe('all', () => {
     const p = all(char('a'), char('b'), char('c'))
 
     it('"abc"を受け付ける', () => {
-      const result = p(split('abc')) satisfies Result<[[string, string, string], CharArray]>
+      const result = p(split('abc')) satisfies ParseResult<[string, string, string]>
       expect(result).toEqual(success([['a', 'b', 'c'], []]))
     })
     it('"abcd"を受け付ける', () => {
-      const result = p(split('abcd')) satisfies Result<[[string, string, string], CharArray]>
+      const result = p(split('abcd')) satisfies ParseResult<[string, string, string]>
       expect(result).toEqual(success([['a', 'b', 'c'], ['d']]))
     })
     it('いずれかが失敗したら失敗', () => {
@@ -25,7 +25,7 @@ describe('all', () => {
     const p = all(all(char('a'), char('b')), all(anyChar, char('x'), eof))
 
     it('"ab.x"を受け付ける', () => {
-      const result = p(split('ab吉x')) satisfies Result<[[string, string, string, string], CharArray]>
+      const result = p(split('ab吉x')) satisfies ParseResult<[string, string, string, string]>
       expect(result).toEqual(success([['a', 'b', '吉', 'x'], []]))
     })
     it('失敗', () => {
